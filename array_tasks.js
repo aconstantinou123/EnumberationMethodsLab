@@ -22,13 +22,16 @@ var arrayTasks = {
 		return sum;
 	},
 
-	// findDuplicates: function (arr) {
-	// 	var uniqueArray = arr.filter(function(item, pos) {
-  //   return arr.indexOf(item) == pos;
-	// 	});
-	// 	console.log(uniqueArray);
-	// 	return uniqueArray;
-	// },
+	findDuplicates: function (arr) {
+		var uniqueArray = []
+			arr.forEach(function(element, index){
+				var unique = arr.indexOf(element) == index;
+				 if(unique == false && !uniqueArray.includes(element)){
+				uniqueArray.push(element);
+				}
+			})
+			return uniqueArray;
+	},
 
 	removeAndClone: function (arr, valueToRemove) {
 		var filteredArray = arr.filter(element => element !== valueToRemove);
@@ -39,16 +42,25 @@ var arrayTasks = {
 		var indexArray = [];
 		arr.forEach(function(element, index){
 			if(element === itemToFind){
-				console.log(element);
 				indexArray.push(index);
 			}
 		})
 		return indexArray;
 	},
 
-	// sumOfAllEvenNumbersSquared: function (arr) {
-
-	// }
+	sumOfAllEvenNumbersSquared: function (arr) {
+		var resultArr = [];
+		arr.forEach(function(element){
+			if(element % 2 === 0){
+				var evenElementSquared = element * element;
+				resultArr.push(evenElementSquared);
+			}
+		})
+		var sumOfelements = resultArr.reduce(function(total, currentValue){
+			return total + currentValue;
+		});
+		return sumOfelements;
+	}
 
 }
 
